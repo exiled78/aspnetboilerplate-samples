@@ -31,7 +31,17 @@ namespace Acme.SimpleTaskApp.Core.Tasks
             Abp.Events.Bus.Entities.EntityCreatingEventData<Acme.SimpleTaskApp.Tasks.Task> eventData)
         {
             Debug.WriteLine("*** Task Created ***");
-            var result = _repo.GetAll();
+            try
+            {
+                var result = _repo.GetAll();
+                var count = result.Count();
+                Debug.WriteLine($"*** Count : {count} ***");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"*** Exception :  {ex.StackTrace}***");
+            }
+            
         }
     }
 }
