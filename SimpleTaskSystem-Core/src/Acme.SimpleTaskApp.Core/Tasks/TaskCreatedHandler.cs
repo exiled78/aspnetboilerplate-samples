@@ -15,7 +15,7 @@ using Acme.SimpleTaskApp.People;
 namespace Acme.SimpleTaskApp.Core.Tasks
 {
     public class TaskCreatedHandler :
-        IEventHandler<Abp.Events.Bus.Entities.EntityCreatingEventData<Acme.SimpleTaskApp.Tasks.Task>>,
+        IEventHandler<Abp.Events.Bus.Entities.EntityCreatedEventData<Acme.SimpleTaskApp.Tasks.Task>>,
         ITransientDependency
     {
         private IBackgroundJobManager _mgr;
@@ -28,7 +28,7 @@ namespace Acme.SimpleTaskApp.Core.Tasks
         }
 
         public void HandleEvent(
-            Abp.Events.Bus.Entities.EntityCreatingEventData<Acme.SimpleTaskApp.Tasks.Task> eventData)
+            Abp.Events.Bus.Entities.EntityCreatedEventData<Acme.SimpleTaskApp.Tasks.Task> eventData)
         {
             Debug.WriteLine("*** Task Created ***");
             try
